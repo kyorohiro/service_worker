@@ -1003,6 +1003,10 @@ class Response extends Body {
 
   factory Response.error() => new Response._(facade.Response.error());
 
+  factory Response.custom(dynamic /*Blob|TypedData|ByteBuffer|FormData|String*/ body, {int status=200, String statusText='OK',dynamic /*Headers|List<String>|JSMap of <String,String>*/ headers=const []}) {
+    return  new Response._(new facade.Response(body,new facade.ResponseInit(status:status,statusText: statusText)));
+  }
+
   /// 'basic'|'cors'|'default'|'error'|'opaque'|'opaqueredirect'
   String get type => _getProperty(_delegate, 'type');
 
